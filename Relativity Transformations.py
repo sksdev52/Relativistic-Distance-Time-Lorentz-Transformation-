@@ -27,7 +27,8 @@ def relativistic_beta_gamma_addition( vlist = [], rec = []): # List of relative 
         beta_initial = 0
     elif rec[0] == False:
         vlist[0] = -vlist[0]
-    beta_initial = vlist[0]/ltsp
+    else:
+        beta_initial = vlist[0]/ltsp
     #print("Initial beta", beta_initial) # For testing purpose
     for i in range (1, len(vlist)):
             if vlist[i]==0: # If some intermediatory velocity is 0
@@ -47,7 +48,7 @@ def relativistic_beta_gamma_addition( vlist = [], rec = []): # List of relative 
     if beta_final == 0:
         beta_final = 1 # Prevent multiplication by 0 in a future function call.
     gamma_final = 1/math.sqrt(1-(beta_final**2))
-    if gamma_final <= 1.0000000: # In case beta is not exactly 0 but very very low value
+    if gamma_final <= 1.0000001: # In case final gamma has a very very low decimal value
         beta_final = 1.0
     to_send_beta_gamma.append(beta_final)
     to_send_beta_gamma.append(gamma_final)
